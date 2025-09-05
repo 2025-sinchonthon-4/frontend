@@ -1,10 +1,11 @@
-// src/App.jsx
 import { Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/login/LoginPage';
 import QuizPage from './pages/quiz/QuizPage';
 import MainPage from './pages/main/MainPage';
 import QuizReportPage from './pages/quizReport/QuizReportPage';
 import QuizRecordPage from './pages/quizRecord/QuizRecordPage';
+import QuizReportPage from './pages/quizReport/quizReportPage';
+import KakaoCallback from './pages/login/KakaoCallback';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/quiz-report' element={<QuizReportPage />} />
           <Route path='/quiz-record' element={<QuizRecordPage />} />
           <Route path="/" element={<MainPage />} />
+          <Route path="/auth/kakao/callback" element={<KakaoCallback />} />
         </Routes>
       </div>
     </div>
