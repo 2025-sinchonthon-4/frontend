@@ -12,7 +12,12 @@ const LoginPage = () => {
       </div>
 
       {/* 카카오 로그인 버튼 */}
-      <img src="/kakao-login.svg" alt="카카오 로그인" onClick={handleKakaoLogin} />
+      <button
+      onClick={handleKakaoLogin} 
+      className="cursor-pointer"
+      >
+        <img src="/kakao-login.svg" alt="카카오 로그인" />
+      </button>
     </div>
   );
 };
