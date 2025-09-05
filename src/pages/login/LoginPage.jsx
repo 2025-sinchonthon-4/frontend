@@ -1,10 +1,9 @@
 const LoginPage = () => {
-  const REST_API_KEY = import.meta.env.VITE_KAKAO_REST_API_KEY;
-  const REDIRECT_URI = import.meta.env.VITE_KAKAO_REDIRECT_URI;
-
   const handleKakaoLogin = () => {
-    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-    window.location.href = kakaoURL;
+    // Spring Security OAuth2 방식으로 변경
+    // 백엔드의 OAuth2 엔드포인트로 직접 리다이렉션
+    const backendOAuthUrl = `${import.meta.env.VITE_API_BASE_URL}/oauth2/authorization/kakao`;
+    window.location.href = backendOAuthUrl;
   };
 
   return (
