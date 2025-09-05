@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
-import api from "../../api/instance";
+import api from "../../apis/instance";
 
 function Modal({ open, onClose, title, category, children }) {
   if (!open) return null;
