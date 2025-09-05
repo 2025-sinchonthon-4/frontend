@@ -29,7 +29,7 @@ const KakaoCallback = () => {
         }
 
         // 백엔드 서버에 authorization code를 보내고 JWT 토큰을 받음
-        const response = await instance.post('/api/auth/kakao', { code });
+        const response = await instance.post('/oauth2/authorization/kakao', { code });
 
         // 백엔드에서 받은 JWT 토큰을 localStorage에 저장
         const { token, user } = response.data;
