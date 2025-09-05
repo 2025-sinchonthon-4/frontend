@@ -18,7 +18,7 @@ function App() {
           <Route path='/quiz-report' element={<QuizReportPage />} />
           <Route path='/quiz-record' element={<QuizRecordPage />} />
           <Route path="/" element={<MainPage />} />
-          <Route path="interest" element={<InterestPage />} />
+          <Route path="/interest" element={<InterestPage />} />
           <Route path="/auth/kakao/callback" element={<KakaoCallback />} />
 
         </Routes>
