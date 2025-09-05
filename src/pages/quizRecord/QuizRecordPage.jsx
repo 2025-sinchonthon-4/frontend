@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 
-function Modal({ open, onClose, title, children }) {
+function Modal({ open, onClose, title, category, children }) {
   if (!open) return null;
 
   // 오버레이 클릭으로 닫기
@@ -19,18 +19,19 @@ function Modal({ open, onClose, title, children }) {
         className="mx-4 w-[20rem] rounded-2xl bg-white p-6 shadow-xl transition-all
                    animate-in fade-in zoom-in duration-150"
       >
-        <div className="mb-4 flex items-start justify-center gap-4">
+        <div className="mb-[0.5rem] flex flex-col justify-start items-center gap-4">
           <h2 className="text-lg font-semibold">{title}</h2>
+          <p className="text-[0.9rem] font-semibold text-[#6F6E6E]">[{category}]</p>
         </div>
 
-        <div className="prose max-w-none text-sm leading-relaxed">
+        <div className="flex flex-col justify-center gap-[1rem] prose max-w-none text-sm leading-relaxed">
           {children}
         </div>
 
         <div className="mt-6 flex justify-center">
           <button
             onClick={onClose}
-            className="rounded-xl border px-4 py-2 text-sm hover:bg-neutral-50 active:scale-95"
+            className="cursor-pointer h-[1.9rem] w-[5rem] border border-[#6F6E6E] rounded-[1.25rem] text-[#6F6E6E] text-[0.8125rem] font-medium  hover:bg-neutral-50 active:scale-95"
             type="button"
           >
             확인
@@ -62,7 +63,7 @@ const QuizRecordPage = () => {
           </div>
           <div className="flex justify-between w-full items-center">
             <span className="text-[0.75rem] text-[#6F6E6E] font-medium">{date}</span>
-            <button className="cursor-pointer h-[1.9rem] w-[6.4375rem] border border-[#6F6E6E] rounded-[1.25rem] text-[#6F6E6E] text-[0.8125rem] font-medium" onClick={() => setOpen(true)}>
+            <button className="cursor-pointer h-[1.9rem] w-[6.4375rem] border border-[#6F6E6E] rounded-[1.25rem] text-[#6F6E6E] text-[0.8125rem] font-medium hover:bg-neutral-50 active:scale-95" onClick={() => setOpen(true)}>
               정답 및 해설
             </button>
           </div>
@@ -73,10 +74,10 @@ const QuizRecordPage = () => {
         홈으로 돌아가기
       </Button>
 
-      <Modal open={open} onClose={() => setOpen(false)} title="정답 및 해설">
+      <Modal open={open} onClose={() => setOpen(false)} title="정답 및 해설" category="여행/지역">
         <p className="font-semibold">{problem}</p>
         <p className="mb-2 text-center">
-          <span className="font-semibold">정답:</span> {answer}
+          <span className="text-[1rem] font-semibold text-[#F79030]">정답:</span> <span className='text-[1rem] text-[#F79030]'>{answer}</span>
         </p>
         <p className="text-neutral-700">{explanation}</p>
       </Modal>
