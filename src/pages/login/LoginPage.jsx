@@ -15,7 +15,7 @@ const LoginPage = () => {
       </div>
 
       <div className="text-xl font-medium text-center">
-        1cm의 지식으로 뇌를 깨우다!<br/>하루 상식 퀴즈 플랫폼
+        1cm의 지식으로 뇌를 깨우다!<br/>하루 상식 충전 플랫폼
       </div>
 
       <div className="text-6xl font-semibold mb-10">
