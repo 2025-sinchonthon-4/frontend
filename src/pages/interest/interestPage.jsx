@@ -26,9 +26,8 @@ export default function InterestPage() {
   };
 
   return (
-    <div className="relative w-full bg-[#F3F3F6] text-[#0F0F10]">
+    <div className="relative w-full h-screen overflow-hidden bg-[#F3F3F6] text-[#0F0F10]">
       {/* 393 × 100vh 박스 (스크롤 방지용, padding 없음) */}
-      <div className="relative w-[393px] h-screen mx-auto overflow-hidden">
         <InterestIntro onSkip={handleSkip} />
 
         {/* ⬇︎ Figma 좌표로 중앙에 배치 (원하면 top만 미세조정) */}
@@ -43,7 +42,6 @@ export default function InterestPage() {
           disabled={!selection}
           className="absolute left-1/2 -translate-x-1/2 bottom-[90px]"
         />
-      </div>
     </div>
   );
 }
