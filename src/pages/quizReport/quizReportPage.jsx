@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate} from 'react-router-dom';
+import Button from '../../components/Button';
 
 const QuizReportPage = () => {
   const navigate = useNavigate();
@@ -26,9 +27,9 @@ const QuizReportPage = () => {
         <p className="font-bold text-[3rem]">/{totalScore}</p>
       </div>
       
-      <button className='' onClick={() => navigate("/")}>홈으로 돌아가기</button>
-      <button className='' onClick={() => navigate("/quiz")}>틀린 문제 다시 풀기</button>
-      <button className='' onClick={() => navigate("/quiz")}>다른 퀴즈 풀기</button>
+      <Button className='mb-[1.13rem]' onClick={() => navigate("/")}>홈으로 돌아가기</Button>
+      <Button className='mb-[1.13rem]' onClick={() => navigate("/quiz")}>틀린 문제 다시 풀기</Button>
+      <Button onClick={() => navigate("/quiz")}>다른 퀴즈 풀기</Button>
     </div>
   );
 }
