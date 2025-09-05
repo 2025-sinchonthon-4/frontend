@@ -4,7 +4,6 @@ import QuizPage from './pages/quiz/QuizPage';
 import MainPage from './pages/main/MainPage';
 import QuizReportPage from './pages/quizReport/QuizReportPage';
 import QuizRecordPage from './pages/quizRecord/QuizRecordPage';
-import QuizReportPage from './pages/quizReport/quizReportPage';
 import InterestPage from "./pages/interest/interestPage";
 import KakaoCallback from './pages/login/KakaoCallback';
 
