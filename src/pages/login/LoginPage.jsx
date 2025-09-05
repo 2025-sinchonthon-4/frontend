@@ -1,7 +1,10 @@
 const LoginPage = () => {
+  const REST_API_KEY = import.meta.env.VITE_KAKAO_REST_API_KEY;
+  const REDIRECT_URI = import.meta.env.VITE_KAKAO_REDIRECT_URI;
+
   const handleKakaoLogin = () => {
-    // 여기에 카카오 로그인 로직을 구현
-    alert('카카오 로그인 버튼 클릭');
+    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+    window.location.href = kakaoURL;
   };
 
   return (
@@ -13,8 +16,8 @@ const LoginPage = () => {
 
       {/* 카카오 로그인 버튼 */}
       <button
-      onClick={handleKakaoLogin} 
-      className="cursor-pointer"
+        onClick={handleKakaoLogin}
+        className="cursor-pointer"
       >
         <img src="/kakao-login.svg" alt="카카오 로그인" />
       </button>
