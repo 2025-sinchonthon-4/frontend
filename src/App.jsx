@@ -8,7 +8,7 @@ import QuizReportPage from './pages/quizReport/quizReportPage';
 function App() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-200">
-      <div className="w-[393px] h-[852px] bg-white shadow-lg overflow-y-auto rounded-3xl border-2 border-gray-300">
+      <div className="w-[393px] h-[852px] bg-white shadow-lg overflow-y-auto border-2 border-gray-300">
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/quiz" element={<QuizPage />} />
