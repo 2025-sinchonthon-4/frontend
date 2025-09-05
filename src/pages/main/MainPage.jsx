@@ -6,9 +6,9 @@ import MainActions from "./components/MainActions";
 
 export default function MainPage() {
   return (
-    <div className="relative w-full h-screen bg-[#F3F3F6] text-[#0F0F10]">
+    <div className="w-full bg-[#F3F3F6] text-[#0F0F10]">
       {/* 393 × 100vh 고정 컨테이너 */}
-      <div className="relative w-[393px] h-screen mx-auto overflow-hidden">
+      <div className="w-full mx-auto overflow-hidden">
         {/* ⬇️ 여기 랩퍼의 pt/gap으로 전체 위치·간격 제어 */}
         <div className="px-6 pt-[36px]">
           <div className="flex flex-col items-center gap-[28px]">
