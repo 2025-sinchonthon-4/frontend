@@ -1,4 +1,3 @@
-// src/pages/main/components/OrangeButton.jsx
 export default function OrangeButton({ children, onClick, className = "" }) {
   return (
     <button

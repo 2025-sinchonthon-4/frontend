@@ -1,4 +1,3 @@
-// src/pages/main/components/KnowledgeLength.jsx
 export default function KnowledgeLength({ lengthCm = 3 }) {
   return (
     <p className="mt-6 text-center text-[16px] leading-[22px] text-[#0F0F10]">
