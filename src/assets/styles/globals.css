@@ -1,18 +1,1 @@
 @import "tailwindcss";
-
-/* 경계 포함 박스 모델: border 때문에 스크롤 생기는 것 방지 */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* 기본 여백 제거 + 높이 100% */
-html,
-body,
-#root {
-  height: 100%;
-}
-body {
-  margin: 0;
-}
