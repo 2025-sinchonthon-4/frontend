@@ -25,7 +25,7 @@ const QuizPage = () => {
   };
 
   return (
-    <div className="flex flex-col h-full p-8 bg-white font-['Pretendard']">
+    <div className="flex flex-col h-full p-8 bg-[#F5F5F8]">
       <div className="h-20 flex-shrink-0"></div>
 
       {/* 퀴즈 카테고리 */}
@@ -44,11 +44,11 @@ const QuizPage = () => {
           <Button
             key={option.id}
             onClick={() => setSelectedAnswer(option.id)}
-            className={`transition-colors
+            className={`transition-colors btn-shadow
               ${
                 selectedAnswer === option.id
                   ? '!bg-[#F79030] !font-semibold !border-none'
-                  : '!bg-white !text-black !font-semibold !border !border-[#ADADAF80] !shadow-[0_4px_6px_-1px_rgba(173,173,175,0.5)]'
+                  : '!bg-white !text-black !font-semibold '
               }`}
           >
             {`${option.id}) ${option.text}`}
