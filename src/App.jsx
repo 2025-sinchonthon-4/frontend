@@ -6,6 +6,7 @@ import QuizReportPage from './pages/quizReport/QuizReportPage';
 import QuizRecordPage from './pages/quizRecord/QuizRecordPage';
 import InterestPage from "./pages/interest/interestPage";
 import KakaoCallback from './pages/login/KakaoCallback';
+import AuthKakaoCallback from './pages/AuthKakaoCallback'
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
           <Route path='/quiz-record' element={<QuizRecordPage />} />
           <Route path="/" element={<MainPage />} />
           <Route path="/interest" element={<InterestPage />} />
-          <Route path="/auth/kakao/callback" element={<KakaoCallback />} />
+          <Route path="/auth/kakao/callback" element={<AuthKakaoCallback />} />
 
         </Routes>
       </div>
