@@ -1,10 +1,12 @@
-// src/App.jsx
-import { Routes, Route } from "react-router-dom";
-import LoginPage from "./pages/login/LoginPage";
-import QuizPage from "./pages/quiz/QuizPage";
-import MainPage from "./pages/main/MainPage";
-import QuizReportPage from "./pages/quizReport/quizReportPage";
+import { Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/login/LoginPage';
+import QuizPage from './pages/quiz/QuizPage';
+import MainPage from './pages/main/MainPage';
+import QuizReportPage from './pages/quizReport/QuizReportPage';
+import QuizRecordPage from './pages/quizRecord/QuizRecordPage';
 import InterestPage from "./pages/interest/interestPage";
+import KakaoCallback from './pages/login/KakaoCallback';
+
 
 function App() {
   return (
@@ -13,9 +15,12 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/quiz" element={<QuizPage />} />
-          <Route path="/quiz-report" element={<QuizReportPage />} />
+          <Route path='/quiz-report' element={<QuizReportPage />} />
+          <Route path='/quiz-record' element={<QuizRecordPage />} />
           <Route path="/" element={<MainPage />} />
           <Route path="interest" element={<InterestPage />} />
+          <Route path="/auth/kakao/callback" element={<KakaoCallback />} />
+
         </Routes>
       </div>
     </div>
