@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { mockQuiz } from '../../mocks/mockQuiz';
+import Button from '../../components/Button';
 
 const QuizPage = () => {
   const quizData = mockQuiz;
@@ -28,46 +29,46 @@ const QuizPage = () => {
       <div className="h-20 flex-shrink-0"></div>
 
       {/* 퀴즈 카테고리 */}
-      <div className="text-center text-black text-xs font-normal mb-4">
+      <div className="text-center text-base font-normal mb-[20px]">
         {quizData.category}
       </div>
 
       {/* 퀴즈 질문 */}
-      <div className="text-center text-lg font-semibold mb-12">
+      <div className="text-center text-xl font-medium mb-[33px]">
         {quizData.question}
       </div>
 
-
-      <div className="flex flex-col items-center gap-6">
+      {/* 선택지 버튼들 - Button 컴포넌트 사용 */}
+      <div className="flex flex-col items-center gap-5">
         {quizData.options.map((option) => (
-          <button
+          <Button
             key={option.id}
             onClick={() => setSelectedAnswer(option.id)}
-            className={`w-64 h-12 flex items-center justify-center text-xl rounded-lg transition-colors
+            className={`transition-colors
               ${
                 selectedAnswer === option.id
-                  ? 'bg-stone-300 text-black font-bold border-none'
-                  : 'bg-white text-black font-normal border border-black'
+                  ? '!bg-[#F79030] !font-semibold !border-none'
+                  : '!bg-white !text-black !font-semibold !border !border-[#ADADAF80] !shadow-[0_4px_6px_-1px_rgba(173,173,175,0.5)]'
               }`}
           >
             {`${option.id}) ${option.text}`}
-          </button>
+          </Button>
         ))}
       </div>
 
-      <div className="flex flex-col items-center gap-6 mt-auto">
-        <button
+      {/* 액션 버튼들 - Button 컴포넌트 사용 */}
+      <div className="flex flex-col items-center gap-6 mt-[90px]">
+        <Button
           onClick={handleSubmit}
-          className="w-64 h-12 flex items-center justify-center text-xl font-normal bg-zinc-300 rounded-lg"
         >
           답안 제출하기
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={handleHint}
-          className="w-64 h-12 flex items-center justify-center text-xl font-normal bg-white border border-black rounded-lg"
+          className="bg-[#FDE39B] !text-black"
         >
           힌트 보기
-        </button>
+        </Button>
       </div>
     </div>
   );
