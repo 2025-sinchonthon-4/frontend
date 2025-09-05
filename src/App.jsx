@@ -11,7 +11,7 @@ function App() {
       <div className="w-[393px] h-screen bg-[#F5F5F8] shadow-lg overflow-y-auto border-2 border-gray-300">
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/quiz/:id" element={<QuizPage />} />
           <Route path='/quiz-report' element={<QuizReportPage />} />
           <Route path="/" element={<MainPage />} />
         </Routes>
