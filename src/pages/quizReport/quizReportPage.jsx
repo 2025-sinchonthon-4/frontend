@@ -1,23 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate, useLocation} from 'react-router-dom';
 import Button from '../../components/Button';
 
 const QuizReportPage = () => {
   const navigate = useNavigate();
-  const [score, setScore] = useState(0);
-  const [totalScore, setTotalScore] = useState(20);
-
-  /*
-  useEffect(() => {
-    fetch("/api/quiz/result")   // GET 요청
-      .then((res) => res.json()) 
-      .then((data) => {
-        console.log("서버 응답:", data);
-        // setScore(data.score);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-  */
+  const location = useLocation();
+  const { score, totalScore } = location.state || { correctCount: 0, totalCount: 0 };
 
   return(
     <div className="flex flex-col items-center">
@@ -28,8 +16,8 @@ const QuizReportPage = () => {
       </div>
       
       <Button className='mb-[1.13rem]' onClick={() => navigate("/")}>홈으로 돌아가기</Button>
-      <Button className='mb-[1.13rem]' onClick={() => navigate("/quiz")}>틀린 문제 다시 풀기</Button>
-      <Button onClick={() => navigate("/quiz")}>다른 퀴즈 풀기</Button>
+      <Button className='mb-[1.13rem]' onClick={() => navigate("/quiz", { state: { mode: "wrongQuestions" } })}>틀린 문제 다시 풀기</Button>
+      <Button onClick={() => navigate("/quiz", { state: { mode: "random" } })}>다른 퀴즈 풀기</Button>
     </div>
   );
 }
