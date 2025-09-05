@@ -11,10 +11,10 @@ import KakaoCallback from './pages/login/KakaoCallback';
 function App() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-200">
-      <div className="w-[393px] h-screen bg-white shadow-lg border-2 border-gray-300">
+      <div className="w-[393px] h-screen bg-[#F5F5F8] shadow-lg overflow-y-auto border-2 border-gray-300">
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/quiz/:id" element={<QuizPage />} />
           <Route path='/quiz-report' element={<QuizReportPage />} />
           <Route path='/quiz-record' element={<QuizRecordPage />} />
           <Route path="/" element={<MainPage />} />
