@@ -26,7 +26,7 @@ export default function InterestPage() {
   };
 
   return (
-    <div className="relative w-full h-screen bg-[#F3F3F6] text-[#0F0F10]">
+    <div className="relative w-full bg-[#F3F3F6] text-[#0F0F10]">
       {/* 393 × 100vh 박스 (스크롤 방지용, padding 없음) */}
       <div className="relative w-[393px] h-screen mx-auto overflow-hidden">
         <InterestIntro onSkip={handleSkip} />

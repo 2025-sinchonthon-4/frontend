@@ -36,7 +36,7 @@ export default function CategoryPills({
               "inline-flex items-center justify-center w-[142px] h-[45px] rounded-full",
               "text-[14px] leading-[20px] transition-colors",
               selected
-                ? "bg-[#F7931A] text-white border border-[#F7931A] font-semibold"
+                ? "bg-[#F79030] text-white border border-[#F79030] font-semibold"
                 : "bg-white text-[#333333] border border-[#DADDE2]",
               "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
             ].join(" ")}
