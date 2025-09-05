@@ -12,12 +12,11 @@ function Modal({ open, onClose, title, category, children }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      className="fixed inset-0 z-50 backdrop-blur-sm flex items-center justify-center bg-black/50"
       onMouseDown={handleBackdrop}
     >
       <div
-        className="mx-4 w-[20rem] rounded-2xl bg-white p-6 shadow-xl transition-all
-                   animate-in fade-in zoom-in duration-150"
+        className="mx-4 w-[20rem] rounded-2xl bg-white p-6 shadow-xl animate-fadeIn"
       >
         <div className="mb-[0.5rem] flex flex-col justify-start items-center gap-4">
           <h2 className="text-lg font-semibold">{title}</h2>
