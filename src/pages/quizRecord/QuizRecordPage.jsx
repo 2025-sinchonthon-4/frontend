@@ -51,7 +51,7 @@ const QuizRecordPage = () => {
   useEffect(() => {
     const fetchLogs = async () => {
       try {
-        const res = await api.get("/api/users/me/logs");
+        const res = await api.get("/users/me/logs");
         // 스프링이라면 보통 res.data가 바로 배열인 경우가 많음
         setQuizRecord(Array.isArray(res.data) ? res.data : res.data?.data ?? []);
       } catch (err) {
