@@ -5,6 +5,8 @@ import QuizPage from "./pages/quiz/QuizPage";
 import MainPage from "./pages/main/MainPage";
 import QuizReportPage from "./pages/quizReport/quizReportPage";
 import InterestPage from "./pages/interest/interestPage";
+import KakaoCallback from './pages/login/KakaoCallback';
+
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/quiz-report" element={<QuizReportPage />} />
           <Route path="/" element={<MainPage />} />
           <Route path="interest" element={<InterestPage />} />
+          <Route path="/auth/kakao/callback" element={<KakaoCallback />} />
+
         </Routes>
       </div>
     </div>
