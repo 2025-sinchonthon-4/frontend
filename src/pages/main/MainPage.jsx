@@ -1,10 +1,28 @@
 // src/pages/main/MainPage.jsx
+import { useEffect, useState } from "react";
+import api from "../../apis/instance";
 import StatsRow from "./components/StatsRow";
 import RulerIllustration from "./components/RulerIllustration";
 import KnowledgeLength from "./components/KnowledgeLength";
 import MainActions from "./components/MainActions";
 
 export default function MainPage() {
+  const [solved, setSolved] = useState(0);
+  const [streak, setStreak] = useState(0);
+
+  useEffect(() => {
+    api.get("/api/user/me")
+      .then(res => {
+        setSolved(res.data.totalAttempts);
+        setStreak(res.data.streak);
+      })
+      .catch(err => {
+        // 에러 처리 필요시 추가
+        setSolved(46);
+        setStreak(23);
+      });
+  }, []);
+
   return (
     <div className="w-full bg-[#F3F3F6] text-[#0F0F10]">
       {/* 393 × 100vh 고정 컨테이너 */}
@@ -12,7 +30,7 @@ export default function MainPage() {
         {/* ⬇️ 여기 랩퍼의 pt/gap으로 전체 위치·간격 제어 */}
         <div className="px-6 pt-[36px]">
           <div className="flex flex-col items-center gap-[28px]">
-            <StatsRow solved={46} streak={23} />
+            <StatsRow solved={solved} streak={streak} />
             <RulerIllustration className="mt-[12px]" />
             <KnowledgeLength lengthCm={3} />
             <div className="mt-[20px]">
