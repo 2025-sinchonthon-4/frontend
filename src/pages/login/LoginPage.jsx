@@ -10,16 +10,24 @@ const LoginPage = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full p-4 bg-white">
       {/* 로고 영역 */}
-      <div className="flex items-center justify-center w-64 h-64 mb-15 bg-gray-200 text-gray-700 text-xl font-bold rounded-lg">
-        로고
+      <div className="mb-10">
+        <img src="/logo.svg" alt="Logo" />
+      </div>
+
+      <div className="text-xl font-medium text-center">
+        1cm의 지식으로 뇌를 깨우다!<br/>하루 상식 퀴즈 플랫폼
+      </div>
+
+      <div className="text-6xl font-semibold mb-10">
+        Cenchi
       </div>
 
       {/* 카카오 로그인 버튼 */}
       <button
         onClick={handleKakaoLogin}
         className="cursor-pointer"
-      >
-        <img src="/kakao-login.svg" alt="카카오 로그인" />
+      >        
+        <img src="/kakao-login-medium-wide.png"/>
       </button>
     </div>
   );
