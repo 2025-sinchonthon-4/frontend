@@ -1,3 +1,4 @@
+// hooks/useQuiz.js
 import { useState } from 'react';
 
 export const useQuiz = () => {
@@ -50,8 +51,8 @@ export const useQuiz = () => {
     setIsSubmitted(true);
   };
 
-  const handleHint = (explanation) => {
-    alert('힌트: ' + explanation);
+  const handleHint = (openModal) => {
+    openModal();
   };
 
   const handleAnswerSelect = (answer) => {

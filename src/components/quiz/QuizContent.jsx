@@ -30,7 +30,7 @@ const QuizContent = ({
       ))}
       {isSubmitted && selectedAnswer && (
         <div className="mt-5 w-[17rem]">
-          <div className="text-orange-400 text-base font-medium text-left">
+          <div className="text-orange-400 text-base font-medium text-center">
             {isCorrect ? '정답이에요!🎉' : '오답이에요😢'}
           </div>
         </div>
@@ -69,7 +69,7 @@ const QuizContent = ({
       </div>
       {isSubmitted && selectedAnswer && (
         <div className="mt-5 w-[216px]">
-          <div className="text-orange-400 text-base font-medium text-left">
+          <div className="text-orange-400 text-base font-medium text-center">
             {isCorrect ? '정답이에요!🎉' : '오답이에요😢'}
           </div>
         </div>
@@ -90,7 +90,7 @@ const QuizContent = ({
       />
       {isSubmitted && subjectiveAnswer.trim() && (
         <div className="mt-5 w-[17rem]">
-          <div className="text-orange-400 text-base font-medium text-left">
+          <div className="text-orange-400 text-base font-medium text-center">
             {isCorrect ? '정답이에요!🎉' : '오답이에요😢'}
           </div>
         </div>
