@@ -1,23 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate, useLocation} from 'react-router-dom';
 import Button from '../../components/Button';
 
 const QuizReportPage = () => {
   const navigate = useNavigate();
-  const [score, setScore] = useState(0);
-  const [totalScore, setTotalScore] = useState(20);
-
-  /*
-  useEffect(() => {
-    fetch("/api/quiz/result")   // GET 요청
-      .then((res) => res.json()) 
-      .then((data) => {
-        console.log("서버 응답:", data);
-        // setScore(data.score);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-  */
+  const location = useLocation();
+  const { score, totalScore } = location.state || { correctCount: 0, totalCount: 0 };
 
   return(
     <div className="flex flex-col items-center">
