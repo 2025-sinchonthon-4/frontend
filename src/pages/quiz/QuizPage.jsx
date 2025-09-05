@@ -8,6 +8,8 @@ const QuizPage = () => {
   const quizData = getQuizById(parseInt(id));
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [subjectiveAnswer, setSubjectiveAnswer] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
 
   // 퀴즈 데이터가 없는 경우 처리
   if (!quizData) {
@@ -47,17 +49,11 @@ const QuizPage = () => {
         alert('알 수 없는 퀴즈 형식입니다.');
         return;
     }
-
-    alert(`${userAnswer}을(를) 답안으로 제출합니다.`);
     
     // 정답 확인 로직
-    const isCorrect = checkAnswer(userAnswer, quizData.answer, quizData.type);
-    
-    if (isCorrect) {
-      alert('정답입니다!');
-    } else {
-      alert(`틀렸습니다. 정답은 ${quizData.answer} 입니다.`);
-    }
+    const correct = checkAnswer(userAnswer, quizData.answer, quizData.type);
+    setIsCorrect(correct);
+    setIsSubmitted(true);
   };
 
   const checkAnswer = (userAnswer, correctAnswer, quizType) => {
@@ -83,8 +79,9 @@ const QuizPage = () => {
       {quizData.options.map((option) => (
         <Button
           key={option.id}
-          onClick={() => setSelectedAnswer(option.id)}
-          className={`transition-colors btn-shadow
+          onClick={() => !isSubmitted && setSelectedAnswer(option.id)}
+          disabled={isSubmitted}
+          className={`transition-colors btn-shadow cursor-pointer
             ${
               selectedAnswer === option.id
                 ? '!bg-[#F79030] !font-semibold !border-none'
@@ -94,34 +91,52 @@ const QuizPage = () => {
           {`${option.id}) ${option.text}`}
         </Button>
       ))}
+      {isSubmitted && selectedAnswer && (
+        <div className="mt-5 w-[17rem]">
+          <div className="text-orange-400 text-base font-medium text-left">
+            {isCorrect ? '정답이에요!🎉' : '오답이에요😢'}
+          </div>
+        </div>
+      )}
     </div>
   );
 
   // OX형 퀴즈 렌더링
   const renderOXQuiz = () => (
-    <div className="flex justify-center gap-6 mt-8">
-      <button
-        onClick={() => setSelectedAnswer('O')}
-        className={`w-24 h-24 rounded-[1.25rem] flex items-center justify-center text-4xl font-bold transition-colors btn-shadow
-          ${
-            selectedAnswer === 'O'
-              ? 'bg-[#F79030] text-white'
-              : 'bg-white text-black'
-          }`}
-      >
-        O
-      </button>
-      <button
-        onClick={() => setSelectedAnswer('X')}
-        className={`w-24 h-24 rounded-[1.25rem] flex items-center justify-center text-4xl font-bold transition-colors btn-shadow
-          ${
-            selectedAnswer === 'X'
-              ? 'bg-[#F79030] text-white'
-              : 'bg-white text-black'
-          }`}
-      >
-        X
-      </button>
+    <div className="flex flex-col items-center">
+      <div className="flex justify-center gap-6 mt-8">
+        <button
+          onClick={() => !isSubmitted && setSelectedAnswer('O')}
+          disabled={isSubmitted}
+          className={`w-24 h-24 rounded-[1.25rem] flex items-center justify-center text-4xl font-bold transition-colors btn-shadow cursor-pointer
+            ${
+              selectedAnswer === 'O'
+                ? 'bg-[#F79030] text-white'
+                : 'bg-white text-black'
+            }`}
+        >
+          O
+        </button>
+        <button
+          onClick={() => !isSubmitted && setSelectedAnswer('X')}
+          disabled={isSubmitted}
+          className={`w-24 h-24 rounded-[1.25rem] flex items-center justify-center text-4xl font-bold transition-colors btn-shadow cursor-pointer
+            ${
+              selectedAnswer === 'X'
+                ? 'bg-[#F79030] text-white'
+                : 'bg-white text-black'
+            }`}
+        >
+          X
+        </button>
+      </div>
+      {isSubmitted && selectedAnswer && (
+        <div className="mt-5 w-[216px]">
+          <div className="text-orange-400 text-base font-medium text-left">
+            {isCorrect ? '정답이에요!🎉' : '오답이에요😢'}
+          </div>
+        </div>
+      )}
     </div>
   );
 
@@ -131,10 +146,18 @@ const QuizPage = () => {
       <input
         type="text"
         value={subjectiveAnswer}
-        onChange={(e) => setSubjectiveAnswer(e.target.value)}
+        onChange={(e) => !isSubmitted && setSubjectiveAnswer(e.target.value)}
         placeholder="정답을 입력하세요"
-        className="w-[17rem] h-[2.8125rem] px-4 rounded-[1.875rem] border border-gray-300 text-center text-lg focus:outline-none focus:border-[#F79030] btn-shadow bg-white"
+        disabled={isSubmitted}
+        className="w-[17rem] h-[2.8125rem] px-4 rounded-[1.875rem] border border-gray-300 text-center text-lg focus:outline-none focus:border-[#F79030] btn-shadow bg-white cursor-pointer"
       />
+      {isSubmitted && subjectiveAnswer.trim() && (
+        <div className="mt-5 w-[17rem]">
+          <div className="text-orange-400 text-base font-medium text-left">
+            {isCorrect ? '정답이에요!🎉' : '오답이에요😢'}
+          </div>
+        </div>
+      )}
     </div>
   );
 
@@ -169,18 +192,36 @@ const QuizPage = () => {
       {/* 퀴즈 타입별 컨텐츠 */}
       {renderQuizContent()}
 
-      {/* 액션 버튼들 */}
-      <div className="flex flex-col items-center gap-6 mt-[90px]">
-        <Button onClick={handleSubmit}>
-          답안 제출하기
-        </Button>
-        <Button
-          onClick={handleHint}
-          className="bg-[#FDE39B] !text-black"
-        >
-          힌트 보기
-        </Button>
-      </div>
+      {/* 액션 버튼들 - 제출 전에만 표시 */}
+      {!isSubmitted && (
+        <div className="flex flex-col items-center gap-6 mt-[90px]">
+          <Button onClick={handleSubmit}
+          className='cursor-pointer'>
+            답안 제출하기
+          </Button>
+          <Button
+            onClick={handleHint}
+            className="bg-[#FDE39B] !text-black cursor-pointer"
+          >
+            힌트 보기
+          </Button>
+        </div>
+      )}
+
+      {/* 해설 - 제출 후에만 표시 */}
+      {isSubmitted && (
+        <div className="flex flex-col items-center mt-[40px]">
+          <div className="w-72 h-auto text-center text-xl font-medium mb-4">
+            해설
+          </div>
+          <div className="w-72 h-auto min-h-[200px] bg-white rounded-[30px] shadow-[0px_30px_60px_0px_rgba(57,57,57,0.10)] p-6 flex items-center justify-center">
+            <div className="text-center text-base leading-relaxed">
+              <div className="font-medium mb-2">정답: {quizData.answer}</div>
+              <div>{quizData.explanation}</div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
