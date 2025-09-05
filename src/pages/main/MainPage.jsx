@@ -11,15 +11,15 @@ export default function MainPage() {
   const [streak, setStreak] = useState(0);
 
   useEffect(() => {
-    api.get("/api/user/me")
+    api.get("/users/study-info")
       .then(res => {
-        setSolved(res.data.totalAttempts);
-        setStreak(res.data.streak);
+        setSolved(res.data.todaySolvedCount);
+        setStreak(res.data.continuousStudyDays);
       })
       .catch(err => {
         // 에러 처리 필요시 추가
-        setSolved(46);
-        setStreak(23);
+        setSolved(0);
+        setStreak(0);
       });
   }, []);
 
