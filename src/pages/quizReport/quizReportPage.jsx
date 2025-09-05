@@ -16,8 +16,8 @@ const QuizReportPage = () => {
       </div>
       
       <Button className='mb-[1.13rem]' onClick={() => navigate("/")}>홈으로 돌아가기</Button>
-      <Button className='mb-[1.13rem]' onClick={() => navigate("/quiz")}>틀린 문제 다시 풀기</Button>
-      <Button onClick={() => navigate("/quiz")}>다른 퀴즈 풀기</Button>
+      <Button className='mb-[1.13rem]' onClick={() => navigate("/quiz", { state: { mode: "wrongQuestions" } })}>틀린 문제 다시 풀기</Button>
+      <Button onClick={() => navigate("/quiz", { state: { mode: "random" } })}>다른 퀴즈 풀기</Button>
     </div>
   );
 }
